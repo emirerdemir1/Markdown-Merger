@@ -1,0 +1,41 @@
+name: Windows EXE üret
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Kodu indir
+        uses: actions/checkout@v4
+
+      - name: Python kur
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Bağımlılıkları kur
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: EXE oluştur
+        run: |
+          pyinstaller --noconfirm --onefile --windowed --clean `
+            --name "MarkdownDonusturucu" `
+            --collect-all webview `
+            --collect-all playwright `
+            --hidden-import pythonnet `
+            --add-data "ui;ui" `
+            app.py
+
+      - name: EXE'yi yükle (indirilebilir dosya olarak)
+        uses: actions/upload-artifact@v4
+        with:
+          name: MarkdownDonusturucu-Windows
+          path: dist/MarkdownDonusturucu.exe
+          if-no-files-found: error

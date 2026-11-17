@@ -1,0 +1,176 @@
+:root {
+  --bg: #0f1420;
+  --panel: #171e2e;
+  --panel-2: #1e2739;
+  --line: #2b364c;
+  --text: #e8edf6;
+  --muted: #93a0b8;
+  --accent: #5b8cff;
+  --accent-2: #7c5cff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+}
+
+.app { max-width: 900px; margin: 0 auto; padding: 28px 26px 20px; }
+
+header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+
+.logo {
+  width: 52px; height: 52px; flex: none;
+  display: grid; place-items: center;
+  border-radius: 14px;
+  font-weight: 800; font-size: 18px; letter-spacing: -1px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff;
+}
+.logo span { opacity: .75; font-size: 14px; }
+
+h1 { margin: 0 0 4px; font-size: 21px; letter-spacing: -.3px; }
+header p { margin: 0; color: var(--muted); font-size: 13px; }
+
+main { display: grid; gap: 18px; }
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.card h2 { margin: 0; font-size: 14px; text-transform: uppercase; letter-spacing: .8px; color: var(--muted); }
+.hint { color: var(--muted); font-size: 12px; }
+
+.dropzone {
+  border: 1.5px dashed var(--line);
+  border-radius: 12px;
+  padding: 22px;
+  text-align: center;
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  background: var(--panel-2);
+  transition: border-color .15s, background .15s;
+}
+.dropzone.dragover { border-color: var(--accent); background: #1b2740; }
+.drop-icon { font-size: 26px; color: var(--accent); line-height: 1; }
+.dropzone strong { font-size: 14px; }
+.dropzone span { color: var(--muted); font-size: 12px; }
+
+.file-list { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 8px; }
+.file-list li {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 9px 11px;
+}
+.file-list .num {
+  width: 24px; height: 24px; flex: none;
+  display: grid; place-items: center;
+  border-radius: 7px;
+  background: #2a3955; color: #cfe0ff;
+  font-size: 12px; font-weight: 700;
+}
+.file-list .name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.file-list button {
+  border: 0; background: transparent; color: var(--muted);
+  cursor: pointer; font-size: 15px; padding: 2px 6px; border-radius: 5px;
+}
+.file-list button:hover { background: #2b364c; color: #fff; }
+.file-list button.del:hover { background: #5c2630; color: #ff9aa8; }
+
+.empty { color: var(--muted); font-size: 12px; text-align: center; margin: 14px 0 0; }
+
+.field-label { display: block; margin: 4px 0 7px; font-size: 12px; color: var(--muted); }
+.field-label small { opacity: .7; }
+
+input[type="text"] {
+  width: 100%; padding: 10px 12px; margin-bottom: 16px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  color: var(--text);
+  outline: none;
+}
+input[type="text"]:focus { border-color: var(--accent); }
+
+.formats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.format {
+  display: flex; align-items: center; gap: 10px; text-align: left;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 11px;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color .15s, background .15s;
+}
+.format:hover { border-color: #41527a; }
+.format.active { border-color: var(--accent); background: #1d2b46; }
+.format strong { display: block; font-size: 13px; }
+.format small { display: block; color: var(--muted); font-size: 11px; margin-top: 2px; }
+.fmt-icon {
+  width: 30px; height: 30px; flex: none;
+  display: grid; place-items: center;
+  border-radius: 8px;
+  font-weight: 800; font-size: 13px;
+  background: #2b5399; color: #fff;
+}
+.fmt-icon.pdf { background: #a32f3a; }
+.fmt-icon.xls { background: #1f7246; }
+
+.actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
+
+.btn {
+  border: 1px solid transparent;
+  border-radius: 9px;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn.primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff; }
+.btn.primary:disabled { opacity: .5; cursor: not-allowed; }
+.btn.ghost { background: var(--panel-2); border-color: var(--line); color: var(--text); }
+.btn.ghost:hover { border-color: var(--accent); }
+.btn.small { padding: 6px 12px; font-size: 12px; }
+
+.status { margin: 12px 0 0; min-height: 18px; font-size: 12px; color: var(--muted); }
+.status.ok { color: #67d69a; }
+.status.err { color: #ff9aa8; }
+
+footer { text-align: center; color: #66738c; font-size: 11px; margin-top: 22px; }
+
+.modal {
+  position: fixed; inset: 0; z-index: 10;
+  background: rgba(5, 8, 15, .8);
+  display: grid; place-items: center;
+  padding: 24px;
+}
+.modal[hidden] { display: none; }
+.modal-box {
+  width: min(760px, 100%); max-height: 86vh;
+  display: flex; flex-direction: column;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.modal-head { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-bottom: 1px solid var(--line); }
+.modal-head h2 { margin: 0; font-size: 15px; }
+.modal-body { overflow: auto; padding: 22px 28px; color: #222; background: #fff; }
+.modal-body section:not(:last-child) { border-bottom: 2px dashed #c8d2e4; padding-bottom: 18px; margin-bottom: 18px; }
+.modal-body table { border-collapse: collapse; width: 100%; margin: 10px 0; }
+.modal-body th, .modal-body td { border: 1px solid #b8c4d6; padding: 6px 9px; text-align: left; }
+.modal-body th { background: #1f3864; color: #fff; }
+.modal-body pre { background: #f4f4f4; padding: 10px; border-radius: 6px; white-space: pre-wrap; }
+.modal-body blockquote { border-left: 4px solid #1f3864; margin: 10px 0; padding-left: 12px; color: #444; }

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Markdown Dönüştürücü</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="logo">M<span>→</span>D</div>
+      <div>
+        <h1>Markdown Dönüştürücü</h1>
+        <p>Markdown dosyalarını sırayla birleştir, Word / PDF / Excel olarak kaydet.</p>
+      </div>
+    </header>
+
+    <main>
+      <section class="card">
+        <div class="card-head">
+          <h2>1 · Markdown dosyaları</h2>
+          <span class="hint" id="file-count">0 dosya</span>
+        </div>
+
+        <div class="dropzone" id="dropzone">
+          <div class="drop-icon">＋</div>
+          <strong>Dosyaları buraya bırak</strong>
+          <span>veya aşağıdaki düğmeyle seç</span>
+          <button class="btn ghost" id="add-btn">Dosya Ekle</button>
+        </div>
+
+        <ul class="file-list" id="file-list"></ul>
+        <p class="empty" id="empty">Henüz dosya eklenmedi. Sırayla ekleyeceğiniz dosyalar tek belgede birleştirilir.</p>
+      </section>
+
+      <section class="card">
+        <div class="card-head">
+          <h2>2 · Çıktı ayarları</h2>
+        </div>
+
+        <label class="field-label" for="title">Belge başlığı <small>(isteğe bağlı)</small></label>
+        <input id="title" type="text" placeholder="Örn. Aylık Rapor" />
+
+        <label class="field-label">Çıktı formatı</label>
+        <div class="formats" id="formats">
+          <button class="format active" data-fmt="docx">
+            <span class="fmt-icon">W</span>
+            <span><strong>Word</strong><small>.docx</small></span>
+          </button>
+          <button class="format" data-fmt="pdf">
+            <span class="fmt-icon pdf">P</span>
+            <span><strong>PDF</strong><small>.pdf</small></span>
+          </button>
+          <button class="format" data-fmt="xlsx">
+            <span class="fmt-icon xls">X</span>
+            <span><strong>Excel</strong><small>.xlsx</small></span>
+          </button>
+        </div>
+
+        <div class="actions">
+          <button class="btn ghost" id="preview-btn">Önizle</button>
+          <button class="btn primary" id="convert-btn">Dönüştür ve Kaydet</button>
+        </div>
+        <p class="status" id="status"></p>
+      </section>
+    </main>
+
+    <footer>Birleştirme sırası: listelenen sıra birebir korunur · Dosyalar arasına sayfa sonu eklenir</footer>
+  </div>
+
+  <div class="modal" id="modal" hidden>
+    <div class="modal-box">
+      <div class="modal-head">
+        <h2>Önizleme</h2>
+        <button class="btn ghost small" id="close-modal">Kapat</button>
+      </div>
+      <div class="modal-body" id="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

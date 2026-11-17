@@ -1,0 +1,17 @@
+# Sanal ortam ve geçici dosyalar GitHub'a gönderilmez
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Üretilen çıktılar (örnekler samples/ içinde durur)
+cikti/
+
+# PyInstaller
+build/
+dist/
+*.spec
+
+# Sistem dosyaları
+.DS_Store
+Thumbs.db
