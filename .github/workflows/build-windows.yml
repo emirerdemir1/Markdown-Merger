@@ -11,10 +11,10 @@ jobs:
 
     steps:
       - name: Kodu indir
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Python kur
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: "3.11"
 
@@ -34,7 +34,7 @@ jobs:
             app.py
 
       - name: EXE'yi yükle (indirilebilir dosya olarak)
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: MarkdownDonusturucu-Windows
           path: dist/MarkdownDonusturucu.exe
