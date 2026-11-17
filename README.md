@@ -97,7 +97,25 @@ requirements.txt            Gerekli kütüphaneler
 
 ---
 
-## 5. Bilinen noktalar
+## 5. Gizlilik ve hukuki durum
+
+- **Veri toplanmaz.** Uygulamanın internete çıkış kodu yoktur; dosyalarınız
+  yalnızca sizin bilgisayarınızda okunur ve çıktı yine sizin seçtiğiniz
+  klasöre kaydedilir. Sunucu, hesap, analitik veya telemetri yoktur.
+- PDF üretimi sırasında kullanılan tarayıcı **çevrimdışı modda** başlatılır
+  (arka plan güncellemeleri ve ağ istekleri kapatılmıştır).
+- Uygulama içinde **sözleşme/kullanıcı onayı penceresi yoktur** — gerekli
+  değildir, çünkü hiçbir veri gönderilmez ve hesap oluşturulmaz.
+- Kaynak kod **MIT lisansı** ile sunulur (`LICENSE`). Ücretsiz kullanım,
+  değiştirme ve dağıtım serbesttir.
+- Paketlenmiş `.exe` içindeki üçüncü taraf kütüphanelerin lisansları
+  `THIRD_PARTY_NOTICES.md` dosyasında listelenmiştir.
+- Bu belgeler hukuki tavsiye niteliği taşımaz; kurumsal kullanım için
+  kendi hukuk danışmanınıza başvurmanız önerilir.
+
+---
+
+## 6. Bilinen noktalar
 
 - Her markdown dosyası arasına sayfa sonu eklenir.
 - Excel'de tablolar ayrı sayfalara, tablo dışındaki metinler **"Metin"** sayfasına yazılır.

@@ -77,7 +77,18 @@ def html_to_pdf(html: str, output_path: str | Path, css: str = DEFAULT_CSS) -> P
         # gelen Edge'i kullanır (paketlemede tarayıcı indirmeyi önler).
         browser = None
         last_error = None
-        for options in ({}, {"channel": "msedge"}):
+        # Arka plan ağ trafiğini tamamen kapat: hiçbir veri dışarı çıkmaz.
+        offline_args = [
+            "--disable-background-networking",
+            "--disable-component-update",
+            "--disable-default-apps",
+            "--disable-sync",
+            "--no-first-run",
+        ]
+        for options in (
+            {"args": offline_args},
+            {"channel": "msedge", "args": offline_args},
+        ):
             try:
                 browser = p.chromium.launch(**options)
                 break
