@@ -3,6 +3,8 @@
 Markdown dosyalarını **verdiğiniz sırayla tek belgede birleştirir** ve
 **Word (.docx) / PDF (.pdf) / Excel (.xlsx)** olarak kaydeder.
 
+- Kaynak kod: https://github.com/emirerdemir1/Markdown-Birle-tirici (Public)
+
 ---
 
 ## 1. Mac'te çalıştırma (geliştirme)
@@ -15,7 +17,7 @@ source .venv/bin/activate
 python3 app.py
 ```
 
-İlk kurulumu yapmadıysanız (bir kez yeterli):
+İlk kurulum bir kez yapılır:
 
 ```bash
 python3 -m venv .venv
@@ -24,9 +26,15 @@ pip install -r requirements.txt
 playwright install chromium
 ```
 
-> `.venv` klasörü sanal ortamdır; kütüphaneleri temiz tutar. Silerseniz yeniden kurmanız gerekir.
+Açılan pencerede:
 
-### Komut satırından da kullanılabilir
+1. **Dosya Ekle** ile markdown dosyalarını sırayla seçin.
+2. Listedeki **↑ / ↓** oklarıyla sırayı değiştirin, **×** ile çıkarın.
+3. Başlık yazın (isteğe bağlı).
+4. Format seçin: **Word / PDF / Excel**.
+5. **Önizle** ile bakın veya **Dönüştür ve Kaydet** ile kaydedin.
+
+Komut satırından da kullanılabilir:
 
 ```bash
 python3 -c "from converter import convert_files; convert_files(['samples/1-giris.md','samples/2-detay.md'], 'pdf', 'cikti/rapor.pdf')"
@@ -34,56 +42,43 @@ python3 -c "from converter import convert_files; convert_files(['samples/1-giris
 
 ---
 
-## 2. Windows `.exe` üretme (önerilen yöntem: GitHub Actions)
+## 2. Windows `.exe` üretme (GitHub Actions)
 
-Windows makineniz olmasa bile olur. GitHub'ın bulut Windows bilgisayarı sizin yerinize derler.
+Windows makinesi gerekmez; GitHub'ın bulut Windows bilgisayarı derler.
 
-### Adım adım
+1. Tarayıcıda repo'ya gidin: https://github.com/emirerdemir1/Markdown-Birle-tirici
+2. **Actions** sekmesine tıklayın.
+3. Solda **"Windows EXE üret"** işine tıklayın.
+4. **Run workflow** → açılan kutuda tekrar **Run workflow**.
+5. 2–5 dakika bekleyin; iş yeşil ✅ olunca en altta **Artifacts** bölümünden
+   **MarkdownDonusturucu-Windows** dosyasını indirin.
+6. ZIP'i açın → `MarkdownDonusturucu.exe` hazır. Windows'ta çift tıklayın.
 
-1. **GitHub'a giriş yapın:** https://github.com (hesabınız yoksa ücretsiz açın).
-2. **Yeni repository oluşturun:** sağ üst `+` → `New repository`.
-   - Repository name: `markdown-donusturucu`
-   - **Public** seçin (ücretsiz).
-   - `Create repository` deyin.
-3. **Terminal'de proje klasöründe şunları çalıştırın** (kendi kullanıcı adınızı yazın):
-
-   ```bash
-   git init
-   git add .
-   git commit -m "ilk surum"
-   git branch -M main
-   git remote add origin https://github.com/KULLANICI_ADINIZ/markdown-donusturucu.git
-   git push -u origin main
-   ```
-
-   > GitHub "kodunuzu nasıl yükleyeceğiniz" ekranında bu komutları zaten gösterir;
-   > oradakileri kopyalayıp yapıştırmanız en kolayıdır.
-
-4. **GitHub'da `Actions` sekmesine tıklayın.** Sol tarafta **"Windows EXE üret"** işini görün.
-   - Otomatik başlamadıysa işe tıklayıp **"Run workflow"** → **"Run workflow"** deyin.
-5. **2–5 dakika bekleyin.** İş yeşil tik ile bitince:
-   - İşin adına tıklayın → en altta **"Artifacts"** bölümünde
-     **"MarkdownDonusturucu-Windows"** bağlantısına tıklayın → ZIP iner.
-6. **ZIP'i açın, `MarkdownDonusturucu.exe` dosyasını Windows'ta çalıştırın.**
-
-### Sonraki değişikliklerde
-
-Kodda bir şey değiştirince şu 3 komut yeterli:
-
-```bash
-git add .
-git commit -m "degisiklik aciklamasi"
-git push
-```
-
-GitHub otomatik olarak yeni `.exe` üretir.
+> İndirilen `.exe` tek dosyadır; ayrıca Python veya tarayıcı kurulumu gerekmez.
+> PDF için Windows'ta hazır gelen **Microsoft Edge** kullanılır.
 
 ---
 
-## 3. Klasör yapısı
+## 3. Kodda değişiklik yapıp GitHub'a gönderme (GitHub Desktop)
+
+Terminal komutu yok — 3 tık yeterli:
+
+1. **GitHub Desktop**'u açın (repo zaten ekli).
+2. Değişiklik yaptıktan sonra altta **Summary** kutusuna açıklama yazın
+   (örn. `excel hücre renkleri düzeltildi`).
+3. **Commit to main** → sağ üstteki **Push origin** düğmesine tıklayın.
+
+GitHub otomatik olarak yeni `.exe` üretir; Actions sekmesinden indirirsiniz.
+
+> Klasörü elle taşıdıysanız GitHub Desktop'ta **File → Add Local Repository** ile
+> tekrar göstermeniz gerekebilir.
+
+---
+
+## 4. Klasör yapısı
 
 ```
-app.py                      Uygulamayı açar (masaüstü penceresi)
+app.py                      Uygulamayı açar (pywebview penceresi)
 converter/
   merge.py                  Markdown'ları sırayla birleştirir
   render.py                 Markdown -> HTML
@@ -96,16 +91,17 @@ ui/
   style.css                 Görünüm
   app.js                    Buton mantığı
 samples/                    Deneme markdown'ları
-cikti/                      Üretilen örnek çıktılar
 .github/workflows/          Windows .exe derleme ayarı
 requirements.txt            Gerekli kütüphaneler
+.gitignore                  GitHub'a gitmeyecek dosyalar (.venv, cikti, pycache)
 ```
 
 ---
 
-## 4. Bilinen noktalar
+## 5. Bilinen noktalar
 
-- PDF için Windows'ta **Microsoft Edge** kullanılır (Windows 10/11'de hazır gelir).
-  Mac'te `playwright install chromium` ile indirilen Chromium kullanılır.
-- Excel çıktısında tablolar ayrı sayfalara, tablo dışındaki metinler **"Metin"** sayfasına yazılır.
 - Her markdown dosyası arasına sayfa sonu eklenir.
+- Excel'de tablolar ayrı sayfalara, tablo dışındaki metinler **"Metin"** sayfasına yazılır.
+- `.venv`, `cikti/` ve `__pycache__` GitHub'a gönderilmez (`.gitignore` sayesinde).
+- Repo public olduğu için herkes kodu görebilir/indirebilir; isterseniz GitHub Desktop
+  veya web arayüzünden **Private** yapabilirsiniz.
