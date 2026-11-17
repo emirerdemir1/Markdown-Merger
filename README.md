@@ -3,7 +3,7 @@
 Markdown dosyalarını **verdiğiniz sırayla tek belgede birleştirir** ve
 **Word (.docx) / PDF (.pdf) / Excel (.xlsx)** olarak kaydeder.
 
-- Kaynak kod: [GitHub reposu](https://github.com/emirerdemir1/MarkdownDonusturucu) — Public
+- Kaynak kod: [GitHub reposu](https://github.com/emirerdemir1/Markdown-Birle-tirici) — Public
 
 ---
 
@@ -47,7 +47,7 @@ python3 -c "from converter import convert_files; convert_files(['samples/1-giris
 
 Hazır derlenmiş dosya GitHub'da:
 
-1. [GitHub reposu](https://github.com/emirerdemir1/MarkdownDonusturucu) → **Actions** sekmesi.
+1. [GitHub reposu](https://github.com/emirerdemir1/Markdown-Birle-tirici) → **Actions** sekmesi.
 2. Solda **"Windows EXE üret"** işine tıklayın.
 3. En üstteki çalıştırmaya girin → en altta **Artifacts** bölümünden
    **MarkdownDonusturucu-Windows** dosyasını indirin.
